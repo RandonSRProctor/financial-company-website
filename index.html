@@ -11,7 +11,7 @@
 </head>
 <body id="home">
     <header class="hero">
-        <div id="navbar" class="navbar">
+        <div id="navbar" class="navbar top">
             <h1 class="logo">
                 <span class="text-primary"><i class="fas fa-book-open"></i> Edge</span>Ledger
             </h1>
@@ -206,5 +206,33 @@
         </div>
         <p>Copyright &copy; 2020 - EdgeLedger</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        // Make navbar background appear as you scroll down past 100px
+        const navbar = document.getElementById('navbar');
+        let lastScrollTop = 0;
+
+        window.onscroll = () => {
+            if(window.pageYOffset > 100) {
+                navbar.classList.remove('top')
+
+                // Make navbar disappear on scroll down
+                // and reappear on scroll up
+                if (lastScrollTop < window.pageYOffset) {
+                    navbar.style.transform = 'translateY(-150px)'
+                    lastScrollTop = window.pageYOffset;
+                } else {
+                    navbar.style.transform = 'translateY(0)'
+                    lastScrollTop = window.pageYOffset;
+
+                }
+            } else {
+                navbar.classList.add('top')  
+            }
+        }
+
+    </script>
 </body>
 </html>
